@@ -90,29 +90,46 @@ export const IndexPage = ({ currentTickers, exchanges }) => {
   };
   const columns = [
     {
-      title: "Exhanges",
-      dataIndex: "name",
-      key: "name",
-      render: (name) => (
-        <span>
-          <img
-            src={exchanges.find((e) => e.name === name).image}
-            alt={name}
-          />
-          {name}
-        </span>
-      ),
-      ...getColumnSearchProps("name"),
+      title: 'Exhanges',
+      dataIndex: 'name',
+      key: 'name',
+      // render: (name) => (
+      //   <div>
+      //     <img
+      //       src={exchanges.find((e) => e.name === name).image}
+      //       alt={name}
+      //     />
+      //     {name}
+      //   </div>
+      // ),
       sorter: (a, b) => a.name.length - b.name.length,
       sortDirections: ['descend', 'ascend'],
+      ...getColumnSearchProps("name"),
     },
     {
-      title: "Cripto",
+      title: 'WEB',
+      dataIndex: 'url',
+      key: 'url',
+      render: (url) => 
+          <a href={url}>
+            Sitio web
+          </a>
+    },
+    {
+      title: "Base",
       dataIndex: "base",
       key: "base",
       ...getColumnSearchProps("base"),
       sorter: (a, b) => a.base.length - b.base.length,
       sortDirections: ['descend', 'ascend'],
+    },
+    {
+      title: "Cripto",
+      dataIndex: "target",
+      key: "target",
+      // ...getColumnSearchProps("base"),
+      // sorter: (a, b) => a.base.length - b.base.length,
+      // sortDirections: ['descend', 'ascend'],
     },
     {
       title: "Volumen cripto ex",

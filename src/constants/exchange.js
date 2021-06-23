@@ -1,7 +1,20 @@
 export const exchange = [
-    'binance',
-    'hotbit',
     'kraken',
     'bitfinex',
-    'uphold',
+    'bithumb',
+    'gate',
+    'ftx_spot',
+    'okex',
+    'gdax',
+    'hotbit',
+    'binance',
+    'poloniex',
+    // 'kraken_futures',
+    // 'bitfinex_futures',
+    // 'bithumb_futures',
+    // 'gate_futures',
+    // 'ftx',
+    // 'okex_swap',
+    // 'binance_futures',
+    // 'poloniex_futures'
 ]
