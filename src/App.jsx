@@ -24,7 +24,7 @@ export const App = () => {
         })
         .flat()
     );
-  }, []);
+  }, [exchanges]);
   return (
     <div>
       {<IndexPage currentTickers={currentTickers} exchanges={exchanges} />}
