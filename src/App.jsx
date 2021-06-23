@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { exchange } from "./constants/exchange";
+import { exchange, ids } from "./constants/exchange";
 import { IndexPage } from "pages/IndexPage";
-import { getExchange, getCurrentExchange } from "api/coingecko";
+import { getExchange, getCurrentExchange, getCurrentGlobal } from "api/coingecko";
 
 export const App = () => {
   const [exchanges, setExchanges] = useState([]);
   const [currentTickers, setCurrentTickers] = useState([]);
+  const [current, setCurrent] = useState([])
 
   useEffect(() => {
     Promise.all(
@@ -15,19 +16,33 @@ export const App = () => {
         });
       })
     );
+  }, []);
+
+  useEffect(() => {
+    Promise.all(
+      ids.map(async (item) => {
+        getCurrentGlobal(item).then((data) => {
+          setCurrent((before) => [...before, data]);
+        });
+      }).flat()
+    );
+  },[])
+
+  useEffect(() => {
     Promise.all(
       exchange
         .map(async (item) => {
-          getCurrentExchange(item, exchanges).then((data) => {
+          getCurrentExchange(item).then((data) => {
             setCurrentTickers((before) => [...before, data].flat());
           });
         })
         .flat()
     );
-  }, [exchanges]);
+  },[])
   return (
-    <div>
-      {<IndexPage currentTickers={currentTickers} exchanges={exchanges} />}
+    <div style={{textAlign: 'center'}}>
+      {<IndexPage currentTickers={currentTickers} exchanges={exchanges} current={current}/>}
+      none
     </div>
   );
 };

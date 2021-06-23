@@ -12,7 +12,7 @@ export const getExchange = async(name) => {
     return exchange;
 };
 
-export const getCurrentExchange = async(name, exchanges) => {
+export const getCurrentExchange = async(name) => {
     const url = `https://api.coingecko.com/api/v3/coins/tether/tickers?exchange_ids=${name}`;
 
     const resp = await fetch(url);
@@ -32,5 +32,19 @@ export const getCurrentExchange = async(name, exchanges) => {
         return value;
     });
 
+
     return ticker;
 };
+
+export const getCurrentGlobal = async(id) => {
+    const url = `https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd`
+
+    const resp = await fetch(url);
+    const current = await resp.json();
+
+    const currentFormat = await {
+        name: id,
+        usd: Object.values(current)[0].usd
+    }
+    return currentFormat;
+}

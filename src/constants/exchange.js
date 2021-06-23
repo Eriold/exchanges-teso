@@ -1,4 +1,5 @@
 export const exchange = [
+    // SPOT
     'kraken',
     'bitfinex',
     'bithumb',
@@ -9,6 +10,7 @@ export const exchange = [
     'hotbit',
     'binance',
     'poloniex',
+    // futures
     // 'kraken_futures',
     // 'bitfinex_futures',
     // 'bithumb_futures',
@@ -17,4 +19,19 @@ export const exchange = [
     // 'okex_swap',
     // 'binance_futures',
     // 'poloniex_futures'
+]
+
+export const ids = [
+    'bitcoin',
+    'tether',
+    'binancecoin',
+    'cardano',
+    'ripple',
+    'dogecoin',
+    'polkadot',
+    'suniswap',
+    'litecoin',
+    'bitcoin-cash',
+    'sora',
+    'dai'
 ]

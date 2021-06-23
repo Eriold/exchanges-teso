@@ -1,0 +1,63 @@
+body {
+    background-color: #151414;
+}
+
+.content {
+    width: 90%;
+    margin: 0px auto;
+}
+
+.ant-card {
+    background-color: #252525;
+}
+
+.ant-card-bordered {
+    border: 2px solid #3a4236;
+}
+
+.ant-card-head {
+    border-bottom: 1px solid #3a4236;
+    color: #87b37c;
+}
+
+.ant-card-body {
+    color: #36cc34;
+}
+
+
+/********** table ************/
+
+.ant-table table {
+    background-color: #151414;
+}
+
+.ant-table-thead>tr>th {
+    background-color: #4a4a4a;
+    color: #87b37c;
+    font-size: 16px;
+    border-bottom: 1px solid #6e7b65;
+}
+
+.ant-table-tbody {
+    color: #5dde7f;
+}
+
+.ant-table-tbody>tr>td {
+    border-bottom: 1px solid #6e7b65
+}
+
+.ant-table-tbody>tr.ant-table-row:hover>td {
+    background: #2d5c59;
+}
+
+.table-striped-rows tr:nth-child(2n) td {
+    background-color: #252525;
+}
+
+.ant-table-summary>tr>td {
+    border-bottom: 1px solid #36cc34;
+}
+
+img {
+    margin-right: 8px;
+}
