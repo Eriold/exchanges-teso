@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from "react";
-import useFetchExhange from "./hooks/useFetch";
 import { exchange } from "./constants/exchange";
 import { IndexPage } from "pages/IndexPage";
-import getExchange from "api/coingecko";
+import { getExchange, getCurrentExchange } from "api/coingecko";
 
 export const App = () => {
-  const [state, setState] = useState([]);
+  const [exchanges, setExchanges] = useState([]);
+  const [currentTickers, setCurrentTickers] = useState([]);
 
   useEffect(() => {
     Promise.all(
       exchange.map(async (item) => {
         getExchange(item).then((data) => {
-          setState((before) => [...before, data]);
+          setExchanges((before) => [...before, data]);
         });
       })
     );
+    Promise.all(
+      exchange
+        .map(async (item) => {
+          getCurrentExchange(item, exchanges).then((data) => {
+            setCurrentTickers((before) => [...before, data].flat());
+          });
+        })
+        .flat()
+    );
   }, []);
-
   return (
     <div>
-      {<IndexPage newArray={state} />}
-      none
+      {<IndexPage currentTickers={currentTickers} exchanges={exchanges} />}
     </div>
   );
 };

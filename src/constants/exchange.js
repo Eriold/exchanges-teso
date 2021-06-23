@@ -1,5 +1,7 @@
 export const exchange = [
+    'binance',
     'hotbit',
-    'poloniex',
-    'binance'
+    'kraken',
+    'bitfinex',
+    'uphold',
 ]
