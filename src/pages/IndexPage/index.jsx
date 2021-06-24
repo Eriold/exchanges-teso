@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 // import { TableRender } from "components/TableRender";
-import { Table, Input, Button, Space, Card, Row, Col } from "antd";
+import { Table, Input, Button, Space, Card, Row, Col, Avatar, Image } from "antd";
 import "antd/dist/antd.css";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 
-import './index.css'
+import "./index.css";
 
 export const IndexPage = ({ currentTickers, exchanges, current }) => {
   const [columnFilter, setColumnFilter] = useState({
@@ -119,7 +119,7 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
         </div>
       ),
       sorter: (a, b) => a.name.length - b.name.length,
-      sortDirections: ["descend", "ascend"],
+      sortDirections: ["descend", "ascend"]
       // ...getColumnSearchProps("name")
     },
     {
@@ -177,14 +177,28 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
 
   return (
     <div className="content">
-      <div style={{margin: '16px'}}>
-      <Row gutter={[16, 16]} style={{textAlign: 'center'}}>
-        {current.map((cash, index) => 
-          (<Col span={3,4} key={index}>
-            <Card title={cash.name.toUpperCase()} style={{fontSize: '24px'}} >{cash.usd}</Card>
-          </Col>)
-        )}
-      </Row>
+      <div style={{ margin: "16px" }}>
+        <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
+          {current.map((cash, index) => (
+            <Col span={(3, 4)} key={index}>
+              <Card
+                title={
+                  <div>
+                    <Avatar 
+                      src={<Image src={`./assets/coins/${cash.name}.png`}  />}
+                    />
+                    <span style={{marginLeft: '12px'}}>
+                    {cash.name.toUpperCase()}
+                    </span>
+                  </div>
+                }
+                style={{ fontSize: "24px" }}
+              >
+                {cash.usd}
+              </Card>
+            </Col>
+          ))}
+        </Row>
       </div>
       <Table
         className="table-striped-rows"

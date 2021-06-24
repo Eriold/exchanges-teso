@@ -61,3 +61,7 @@ body {
 img {
     margin-right: 8px;
 }
+
+.ant-table-filter-trigger {
+    font-size: 24px;
+}
