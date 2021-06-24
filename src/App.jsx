@@ -42,7 +42,6 @@ export const App = () => {
   return (
     <div style={{textAlign: 'center'}}>
       {<IndexPage currentTickers={currentTickers} exchanges={exchanges} current={current}/>}
-      none
     </div>
   );
 };

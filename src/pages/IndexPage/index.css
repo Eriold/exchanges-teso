@@ -28,7 +28,7 @@ body {
 /********** table ************/
 
 .ant-table table {
-    background-color: #151414;
+    background-color: #202020;
 }
 
 .ant-table-thead>tr>th {
@@ -51,7 +51,7 @@ body {
 }
 
 .table-striped-rows tr:nth-child(2n) td {
-    background-color: #252525;
+    background-color: #333333;
 }
 
 .ant-table-summary>tr>td {
@@ -64,4 +64,31 @@ img {
 
 .ant-table-filter-trigger {
     font-size: 24px;
+}
+
+.ant-table-thead th.ant-table-column-sort {
+    background-color: #2d5c59;
+}
+
+td.ant-table-column-sort {
+    background-color: none;
+}
+
+
+/******* Icon fafa ******/
+
+.ant-empty-img-simple-path {
+    fill: #5dde7f;
+}
+
+.ant-empty-img-simple-ellipse {
+    fill: #5dde7f;
+}
+
+.ant-empty-img-simple-g {
+    stroke: #418448;
+}
+
+.ant-empty-description {
+    color: #5dde7f;
 }

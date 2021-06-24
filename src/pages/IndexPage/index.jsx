@@ -111,11 +111,12 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
       key: "name",
       render: (name) => (
         <div>
-          {/* <img
-            src={exchanges.find((e) => e.name === name).image}
-            alt={name}
-          /> */}
+          <Avatar
+            src={<Image src={exchanges.find((e) => e.name === name)?.image} />}
+          />
+          <span style={{marginLeft: '14px'}}>
           {name}
+          </span>
         </div>
       ),
       sorter: (a, b) => a.name.length - b.name.length,
