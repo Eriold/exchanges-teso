@@ -20,12 +20,12 @@ export const getCurrentExchange = async(name) => {
 
     const ticker = tickers.map((current) => {
         const value = {
+            id: current.name + current.last + current.base + current.target,
             url: current.trade_url,
             name: current.market.name,
             base: current.base,
             target: current.target,
             volume: current.volume,
-            usd: current.converted_last.usd,
             last: current.last,
             spread: (current.last * (current.bid_ask_spread_percentage / 100 + 1))
         };

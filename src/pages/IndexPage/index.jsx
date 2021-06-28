@@ -1,7 +1,17 @@
-import React, { useState, useRef } from "react";
-// import { TableRender } from "components/TableRender";
-import { Table, Input, Button, Space, Card, Row, Col, Avatar, Image } from "antd";
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Table,
+  Input,
+  Button,
+  Space,
+  Card,
+  Row,
+  Col,
+  Avatar,
+  Image
+} from "antd";
 import "antd/dist/antd.css";
+import { ids } from "../../constants/exchange";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 
@@ -12,6 +22,23 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
     searchText: "",
     searchedColumn: ""
   });
+
+  // const [newCurrent, setNewCurrent] = useState([]);
+
+  // useEffect(() => {
+  //   if (newCurrent.length < ids.length) {
+  //     setNewCurrent(current)
+  //   }else if (newCurrent.length === ids.length &&
+  //             current.length === ids.length){
+  //     let newChanges = newCurrent.map(currentAfter => ({
+  //       name: currentAfter.name,
+  //       usd: current.find(newCurrent => newCurrent.name === currentAfter.name)
+
+  //     }))
+  //     setNewCurrent(newChanges)
+  //     console.log('newCurrent', newCurrent)
+  //   }
+  // },[current])
 
   const searchInput = useRef(null);
   const getColumnSearchProps = (dataIndex) => ({
@@ -114,9 +141,7 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
           <Avatar
             src={<Image src={exchanges.find((e) => e.name === name)?.image} />}
           />
-          <span style={{marginLeft: '14px'}}>
-          {name}
-          </span>
+          <span style={{ marginLeft: "14px" }}>{name}</span>
         </div>
       ),
       sorter: (a, b) => a.name.length - b.name.length,
@@ -151,14 +176,6 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
       sortDirections: ["descend", "ascend"]
     },
     {
-      title: "Precio de mercado",
-      dataIndex: "usd",
-      key: "usd",
-      ...getColumnSearchProps("usd"),
-      sorter: (a, b) => a.usd - b.usd,
-      sortDirections: ["descend", "ascend"]
-    },
-    {
       title: "Precio exchange",
       dataIndex: "last",
       key: "last",
@@ -180,25 +197,38 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
     <div className="content">
       <div style={{ margin: "16px" }}>
         <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
-          {current.map((cash, index) => (
-            <Col span={(3, 4)} key={index}>
-              <Card
-                title={
-                  <div>
-                    <Avatar 
-                      src={<Image src={`./assets/coins/${cash.name}.png`}  />}
-                    />
-                    <span style={{marginLeft: '12px'}}>
-                    {cash.name.toUpperCase()}
-                    </span>
-                  </div>
+          {current.length === ids.length &&
+            current
+              .sort(function (a, b) {
+                if (a.name > b.name) {
+                  return 1;
                 }
-                style={{ fontSize: "24px" }}
-              >
-                {cash.usd}
-              </Card>
-            </Col>
-          ))}
+                if (a.name < b.name) {
+                  return -1;
+                }
+                return 0;
+              })
+              .map((cash, index) => (
+                <Col span={(3, 4)} key={index}>
+                  <Card
+                    title={
+                      <div>
+                        <Avatar
+                          src={
+                            <Image src={`./assets/coins/${cash.name}.png`} />
+                          }
+                        />
+                        <span style={{ marginLeft: "12px" }}>
+                          {cash.name.toUpperCase()}
+                        </span>
+                      </div>
+                    }
+                    style={{ fontSize: "24px" }}
+                  >
+                    {cash.usd}
+                  </Card>
+                </Col>
+              ))}
         </Row>
       </div>
       <Table
@@ -206,6 +236,7 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
         columns={columns}
         dataSource={currentTickers}
         pagination={{ pageSize: 50, showSizeChanger: false }}
+        rowKey="id"
       />
     </div>
   );
