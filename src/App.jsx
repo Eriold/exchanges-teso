@@ -15,7 +15,7 @@ export const App = () => {
   useEffect(() => {
     Promise.all(
       exchange.map(async (item) => {
-        getExchange(item).then((data) => {
+        getExchange(item.name).then((data) => {
           setExchanges((before) => [...before, data]);
         });
       })
@@ -35,9 +35,12 @@ export const App = () => {
     Promise.all(
       ids
         .map(async (item) => {
-          getCurrentGlobal(item).then((data) => {
-            setCurrent((before) => [...before, data]);
-          });
+          setTimeout(() => {
+
+            getCurrentGlobal(item).then((data) => {
+              setCurrent((before) => [...before, data]);
+            });
+          }, 1500)
         })
         .flat()
     );
@@ -55,7 +58,7 @@ export const App = () => {
     Promise.all(
       exchange
         .map(async (item) => {
-          getCurrentExchange(item).then((data) => {
+          getCurrentExchange(item.name, item.page).then((data) => {
             setCurrentTickers((before) => [...before, data].flat());
           });
         })
