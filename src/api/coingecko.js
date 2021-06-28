@@ -22,7 +22,7 @@ export const getCurrentExchange = async(name, page) => {
 
         const ticker = tickers.map((current) => {
             const value = {
-                id: current.name + current.last + current.base + current.target + i,
+                id: current.market.name + current.last + current.base + current.target + i,
                 url: current.trade_url,
                 name: current.market.name,
                 base: current.base,
