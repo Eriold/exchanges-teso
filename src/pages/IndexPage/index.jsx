@@ -152,7 +152,7 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
       title: "WEB",
       dataIndex: "url",
       key: "url",
-      render: (url) => <a href={url}>Sitio web</a>
+      render: (url) => <a href={url} target="_blank">Sitio web</a>
     },
     {
       title: "Base",
