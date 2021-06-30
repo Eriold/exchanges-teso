@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { exchange, ids } from "./constants/exchange";
+import { exchange, ids, exchangeFutures } from "./constants/exchange";
 import { IndexPage } from "pages/IndexPage";
 import {
   getExchange,
   getCurrentExchange,
-  getCurrentGlobal
+  getCurrentGlobal,
+  getCurrentExchangeFutures
 } from "api/coingecko";
 
 export const App = () => {
@@ -40,7 +41,7 @@ export const App = () => {
             getCurrentGlobal(item).then((data) => {
               setCurrent((before) => [...before, data]);
             });
-          }, 1500)
+          }, 2500)
         })
         .flat()
     );
@@ -51,7 +52,7 @@ export const App = () => {
     setInterval(() => {
       setCurrentTickers([]);
       changeExchanges();
-    }, 300000);
+    }, 400000);
   }, []);
 
   const changeExchanges = () => {
@@ -59,6 +60,15 @@ export const App = () => {
       exchange
         .map(async (item) => {
           getCurrentExchange(item.name, item.page).then((data) => {
+            setCurrentTickers((before) => [...before, data].flat());
+          });
+        })
+        .flat()
+    );
+    Promise.all(
+      exchangeFutures
+        .map(async (item) => {
+          getCurrentExchangeFutures(item).then((data) => {
             setCurrentTickers((before) => [...before, data].flat());
           });
         })

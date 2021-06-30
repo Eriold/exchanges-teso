@@ -1,6 +1,16 @@
+export const exchangeFutures = [
+    // futures
+    "kraken_futures",
+    "bitfinex_futures",
+    "gate_futures",
+    "ftx",
+    "okex_swap",
+    "binance_futures",
+    "poloniex_futures"
+];
+
 export const exchange = [
-    // SPOT
-    // "kraken"
+    // Spot
     {
         name: "kraken",
         page: 1
@@ -14,7 +24,7 @@ export const exchange = [
         page: 8
     },
     {
-        name: "ftx_spot",
+        name: "ftx_Spot",
         page: 1
     },
     {
@@ -45,15 +55,6 @@ export const exchange = [
         name: "crypto_com",
         page: 1
     }
-
-    // futures
-    // 'kraken_futures',
-    // 'bitfinex_futures',
-    // 'gate_futures',
-    // 'ftx',
-    // 'okex_swap',
-    // 'binance_futures',
-    // 'poloniex_futures'
 ];
 
 export const ids = [

@@ -139,6 +139,7 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
       render: (name) => (
         <div>
           <Avatar
+            draggable={false}
             src={<Image src={exchanges.find((e) => e.name === name)?.image} />}
           />
           <span style={{ marginLeft: "14px" }}>{name}</span>
@@ -165,7 +166,18 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
     {
       title: "Cripto",
       dataIndex: "target",
-      key: "target"
+      key: "target",
+      ...getColumnSearchProps("base"),
+      sorter: (a, b) => a.base.length - b.base.length,
+      sortDirections: ["descend", "ascend"]
+    },
+    {
+      title: "Tipo",
+      dataIndex: "type",
+      key: "type",
+      ...getColumnSearchProps("base"),
+      sorter: (a, b) => a.base.length - b.base.length,
+      sortDirections: ["descend", "ascend"]
     },
     {
       title: "Volumen cripto ex",
@@ -214,6 +226,7 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
                     title={
                       <div>
                         <Avatar
+                          draggable={false}
                           src={
                             <Image src={`./assets/coins/${cash.name}.png`} />
                           }

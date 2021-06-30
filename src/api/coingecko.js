@@ -29,7 +29,8 @@ export const getCurrentExchange = async(name, page) => {
                 target: current.target,
                 volume: current.volume,
                 last: current.last,
-                spread: current.last * (current.bid_ask_spread_percentage / 100 + 1)
+                spread: current.last * (current.bid_ask_spread_percentage / 100 + 1),
+                type: "Spot"
             };
             return value;
         });
@@ -37,6 +38,30 @@ export const getCurrentExchange = async(name, page) => {
     }
 
     return newCurrentExhange.flat();
+};
+
+export const getCurrentExchangeFutures = async(name) => {
+    const url = `https://api.coingecko.com/api/v3/derivatives/exchanges/${name}?include_tickers=tether`;
+
+    const resp = await fetch(url);
+    const { tickers } = await resp.json();
+
+    const ticker = tickers.map((current) => {
+        const value = {
+            id: current.symbol + current.last + current.base + current.target,
+            url: current.trade_url,
+            name: name,
+            base: current.base,
+            target: current.target,
+            volume: parseInt(current.converted_volume.usd),
+            last: current.last,
+            spread: current.last * (current.bid_ask_spread / 100 + 1),
+            type: "Futures"
+        };
+        return value;
+    });
+
+    return ticker
 };
 
 export const getCurrentGlobal = async(id) => {
