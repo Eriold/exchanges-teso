@@ -6,7 +6,12 @@ export const exchangeFutures = [
     "ftx",
     "okex_swap",
     "binance_futures",
-    "poloniex_futures"
+    "poloniex_futures",
+    "huobi_dm",
+    "mxc_futures",
+    "kumex",
+    "bibox_futures"
+
 ];
 
 export const exchange = [
@@ -54,6 +59,30 @@ export const exchange = [
     {
         name: "crypto_com",
         page: 1
+    },
+    {
+        name: "huobi",
+        page: 3
+    },
+    {
+        name: "mxc",
+        page: 6
+    },
+    {
+        name: "bittrex",
+        page: 3
+    },
+    {
+        name: "probit",
+        page: 5
+    },
+    {
+        name: "bibox",
+        page: 2
+    },
+    {
+        name: "p2pb2b",
+        page: 2
     }
 ];
 
