@@ -1,3 +1,7 @@
+const params = {
+    headers: { "Content-Type": "application/json" },
+    mode: "no-cors"
+};
 export const getExchange = async(name) => {
     const url = `https://api.coingecko.com/api/v3/exchanges/${name}`;
 
@@ -9,11 +13,12 @@ export const getExchange = async(name) => {
         name: data.name,
         image: data.image
     };
-    return exchange;
+    return await exchange;
 };
 
 export const getCurrentExchange = async(name, page) => {
     let newCurrentExhange = [];
+
     for (let i = 1; i <= page; i++) {
         const url = `https://api.coingecko.com/api/v3/coins/tether/tickers?exchange_ids=${name}&page=${i}`;
 
@@ -22,7 +27,11 @@ export const getCurrentExchange = async(name, page) => {
 
         const ticker = tickers.map((current) => {
             const value = {
-                id: current.market.name + current.last + current.base + current.target + i,
+                id: current.market.name +
+                    current.last +
+                    current.base +
+                    current.target +
+                    i,
                 url: current.trade_url,
                 name: current.market.name,
                 base: current.base,
@@ -36,7 +45,6 @@ export const getCurrentExchange = async(name, page) => {
         });
         newCurrentExhange.push(ticker);
     }
-
     return newCurrentExhange.flat();
 };
 
@@ -49,7 +57,7 @@ export const getCurrentExchangeFutures = async(name) => {
     const ticker = tickers.map((current) => {
         const value = {
             id: current.symbol + current.last + current.base + current.target,
-            url: current.trade_url,
+            url: current.trade_url === "noopener noreferrer" ? "#" : current.trade_url,
             name: name,
             base: current.base,
             target: current.target,
@@ -61,7 +69,7 @@ export const getCurrentExchangeFutures = async(name) => {
         return value;
     });
 
-    return ticker
+    return ticker;
 };
 
 export const getCurrentGlobal = async(id) => {
@@ -74,5 +82,5 @@ export const getCurrentGlobal = async(id) => {
         name: id,
         usd: Object.values(current)[0].usd
     };
-    return currentFormat;
+    return await currentFormat;
 };
