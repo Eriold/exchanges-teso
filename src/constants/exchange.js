@@ -83,6 +83,10 @@ export const exchange = [
     {
         name: "p2pb2b",
         page: 2
+    },
+    {
+        name: "bithumb_global",
+        page: 3
     }
 ];
 
