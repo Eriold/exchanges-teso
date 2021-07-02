@@ -1,7 +1,3 @@
-const params = {
-    headers: { "Content-Type": "application/json" },
-    mode: "no-cors"
-};
 export const getExchange = async(name) => {
     const url = `https://api.coingecko.com/api/v3/exchanges/${name}`;
 
@@ -25,6 +21,7 @@ export const getCurrentExchange = async(name, page) => {
         const resp = await fetch(url);
         const { tickers } = await resp.json();
 
+        // await setTimeout(() => {
         const ticker = tickers.map((current) => {
             const value = {
                 id: current.market.name +
@@ -44,6 +41,7 @@ export const getCurrentExchange = async(name, page) => {
             return value;
         });
         newCurrentExhange.push(ticker);
+        // },i)
     }
     return newCurrentExhange.flat();
 };

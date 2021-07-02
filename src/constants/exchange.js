@@ -7,13 +7,13 @@ export const exchangeFutures = [
     "okex_swap",
     "binance_futures",
     "poloniex_futures",
-    // "huobi_dm",
-    // "mxc_futures",
-    // "kumex",
-    // "bibox_futures"
+    "huobi_dm",
+    "mxc_futures",
+    "kumex",
+    "bibox_futures"
 
 ];
-
+//Para logos
 export const exchange = [
     // Spot
     {
@@ -60,30 +60,107 @@ export const exchange = [
         name: "crypto_com",
         page: 1
     },
-    // {
-    //     name: "huobi",
-    //     page: 3
-    // },
-    // {
-    //     name: "mxc",
-    //     page: 6
-    // },
-    // {
-    //     name: "bittrex",
-    //     page: 3
-    // },
-    // {
-    //     name: "probit",
-    //     page: 5
-    // },
-    // {
-    //     name: "bibox",
-    //     page: 2
-    // },
-    // {
-    //     name: "p2pb2b",
-    //     page: 2
-    // }
+    {
+        name: "huobi",
+        page: 3
+    },
+    {
+        name: "mxc",
+        page: 6
+    },
+    {
+        name: "bittrex",
+        page: 3
+    },
+    {
+        name: "probit",
+        page: 5
+    },
+    {
+        name: "bibox",
+        page: 2
+    },
+    {
+        name: "p2pb2b",
+        page: 2
+    }
+];
+
+export const exchange1 = [
+    // Spot
+    {
+        name: "poloniex",
+        page: 2
+    },
+    {
+        name: "kucoin",
+        page: 4
+    },
+    {
+        name: "crypto_com",
+        page: 1
+    },
+    {
+        name: "huobi",
+        page: 3
+    },
+    {
+        name: "mxc",
+        page: 6
+    },
+    {
+        name: "bittrex",
+        page: 3
+    },
+    {
+        name: "probit",
+        page: 5
+    },
+    {
+        name: "bibox",
+        page: 2
+    },
+    {
+        name: "p2pb2b",
+        page: 2
+    },
+    {
+        name: "gate",
+        page: 8
+    },
+];
+
+export const exchange2 = [
+    // Spot
+    {
+        name: "kraken",
+        page: 1
+    },
+    {
+        name: "bitfinex",
+        page: 1
+    },
+    {
+        name: "ftx_Spot",
+        page: 1
+    },
+    {
+        name: "okex",
+        page: 3
+    },
+    {
+        name: "gdax",
+        page: 1
+    },
+    {
+        name: "hotbit",
+        page: 9
+    },
+    {
+        name: "binance",
+        page: 3
+    },
+
 ];
 
 export const ids = [

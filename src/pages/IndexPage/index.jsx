@@ -17,15 +17,15 @@ import Highlighter from "react-highlight-words";
 
 import "./index.css";
 
-function isValidURL(url){
-  var RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+// function isValidURL(url){
+//   var RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 
-  if(RegExp.test(url)){
-      return url;
-  }else{
-      return '#';
-  }
-}
+//   if(RegExp.test(url)){
+//       return url;
+//   }else{
+//       return '#';
+//   }
+// }
 
 export const IndexPage = ({ currentTickers, exchanges, current }) => {
   const [columnFilter, setColumnFilter] = useState({
@@ -163,7 +163,7 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
       title: "WEB",
       dataIndex: "url",
       key: "url",
-      render: (url) => <a href={isValidURL(url)} target="_blank">Sitio web</a>
+      render: (url) => <a href={url}>Sitio web</a>
     },
     {
       title: "Base",
