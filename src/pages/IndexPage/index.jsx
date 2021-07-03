@@ -35,23 +35,6 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
   const [selection, setSelection] = useState([]);
   const [investment, setInvestment] = useState(100)
 
-  // const [newCurrent, setNewCurrent] = useState([]);
-
-  // useEffect(() => {
-  //   if (newCurrent.length < ids.length) {
-  //     setNewCurrent(current)
-  //   }else if (newCurrent.length === ids.length &&
-  //             current.length === ids.length){
-  //     let newChanges = newCurrent.map(currentAfter => ({
-  //       name: currentAfter.name,
-  //       usd: current.find(newCurrent => newCurrent.name === currentAfter.name)
-
-  //     }))
-  //     setNewCurrent(newChanges)
-  //     console.log('newCurrent', newCurrent)
-  //   }
-  // },[current])
-
   const searchInput = useRef(null);
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -218,7 +201,6 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
   ];
 
   const onSelectChange = (select) => {
-    console.log("select", select)
     if(select.length === 0) {
       setSelection([])
     }
@@ -239,7 +221,6 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
 
   return (
     <div className="content">
-      {console.log("selection", selection)}
       <div style={{ margin: "16px" }}>
         <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
           {current.length === ids.length &&
@@ -300,9 +281,9 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
         <Col span={6}>
           {" "}
           <Card title='Beneficio' style={{fontSize: '18px'}}>
-            {" "}
-            {/* {selection[0] && selection[1] ? ((100/selection[0].last - 100/selection[1].last)*selection[1].last).toFixed(5) : 'Precio cripto'} */}
-            {selection[0] && selection[1] ? ((investment/selection[0].last - investment/selection[1].last)*selection[1].last).toFixed(5) : 'Precio cripto'}
+            <span style={{color: `${(selection[0] && selection[1] && (investment/selection[0].last - investment/selection[1].last) < 0? 'red': '#36cc34')}`}}>
+              {selection[0] && selection[1] ? ((investment/selection[0].last - investment/selection[1].last)*selection[1].last).toFixed(5) : 'Precio cripto'}
+            </span>
           </Card>{" "}
         </Col>
       </Row>
