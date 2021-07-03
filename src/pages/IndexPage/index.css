@@ -92,3 +92,22 @@ td.ant-table-column-sort {
 .ant-empty-description {
     color: #5dde7f;
 }
+
+
+/*********** Input *************/
+
+.ant-input-affix-wrapper {
+    color: none;
+    background-color: #252525;
+    border: 1px solid #1b9622;
+    height: 28px;
+}
+
+.ant-input-affix-wrapper>input.ant-input {
+    color: #5dde7f;
+    background: #252525;
+}
+
+.ant-input-prefix {
+    color: #31cc34
+}

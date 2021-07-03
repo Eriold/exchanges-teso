@@ -8,7 +8,7 @@ import {
   Row,
   Col,
   Avatar,
-  Image
+  Image,
 } from "antd";
 import "antd/dist/antd.css";
 import { ids } from "../../constants/exchange";
@@ -33,6 +33,7 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
     searchedColumn: ""
   });
   const [selection, setSelection] = useState([]);
+  const [investment, setInvestment] = useState(100)
 
   // const [newCurrent, setNewCurrent] = useState([]);
 
@@ -278,7 +279,9 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
       </div>
       <Row gutter={[16, 16]} style={{marginBottom: '14px'}}>
         <Col span={6}>
-          <Card title="Inversión a realizar" style={{fontSize: '18px'}}> 100 </Card>
+          <Card title="Inversión a realizar" style={{fontSize: '18px'}}>
+            <Input prefix="$" onChange={(e) => setInvestment(e.target.value)} value={investment}/>
+          </Card>
         </Col>
         <Col span={6}>
           {" "}
@@ -298,7 +301,8 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
           {" "}
           <Card title='Beneficio' style={{fontSize: '18px'}}>
             {" "}
-            {selection[0] && selection[1] ? ((100/selection[0].last - 100/selection[1].last)*selection[1].last) : 'Precio cripto'}
+            {/* {selection[0] && selection[1] ? ((100/selection[0].last - 100/selection[1].last)*selection[1].last).toFixed(5) : 'Precio cripto'} */}
+            {selection[0] && selection[1] ? ((investment/selection[0].last - investment/selection[1].last)*selection[1].last).toFixed(5) : 'Precio cripto'}
           </Card>{" "}
         </Col>
       </Row>
