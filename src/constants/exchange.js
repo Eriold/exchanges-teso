@@ -18,75 +18,93 @@ export const exchange = [
     // Spot
     {
         name: "kraken",
-        page: 1
+        page: 1,
+        target: "tether"
     },
     {
         name: "bitfinex",
-        page: 1
+        page: 1,
+        target: "tether"
     },
     {
         name: "gate",
-        page: 8
+        page: 8,
+        target: "tether"
     },
     {
         name: "ftx_Spot",
-        page: 1
+        page: 1,
+        target: "tether"
     },
     {
         name: "okex",
-        page: 3
+        page: 3,
+        target: "tether"
     },
     {
         name: "gdax",
-        page: 1
+        page: 1,
+        target: "tether"
     },
     {
         name: "hotbit",
-        page: 9
+        page: 9,
+        target: "tether"
     },
     {
         name: "binance",
-        page: 3
+        page: 3,
+        target: "tether"
     },
     {
         name: "poloniex",
-        page: 2
+        page: 2,
+        target: "tether"
     },
     {
         name: "kucoin",
-        page: 4
+        page: 4,
+        target: "tether"
     },
     {
         name: "crypto_com",
-        page: 1
+        page: 1,
+        target: "tether"
     },
     {
         name: "huobi",
-        page: 3
+        page: 3,
+        target: "tether"
     },
     {
         name: "mxc",
-        page: 6
+        page: 6,
+        target: "tether"
     },
     {
         name: "bittrex",
-        page: 3
+        page: 3,
+        target: "tether"
     },
     {
         name: "probit",
-        page: 5
+        page: 5,
+        target: "tether"
     },
     {
         name: "bibox",
-        page: 2
+        page: 2,
+        target: "tether"
     },
     {
         name: "p2pb2b",
-        page: 2
+        page: 2,
+        target: "tether"
     },
     {
         name: "bithumb_global",
-        page: 3
+        page: 3,
+        target: "tether"
     }
 ];
 

@@ -296,9 +296,9 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
         </Col>
         <Col span={6}>
           {" "}
-          <Card title='Beneficio' style={{fontSize: '18px'}}>
+          <Card title='Diferencia' style={{fontSize: '18px'}}>
             {" "}
-            {selection[0] && selection[1] ? (100/selection[0].last - 100/selection[1].last) : 'Precio cripto'}
+            {selection[0] && selection[1] ? ((100/selection[0].last - 100/selection[1].last)*selection[1].last) : 'Precio cripto'}
           </Card>{" "}
         </Col>
       </Row>
