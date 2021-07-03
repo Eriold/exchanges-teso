@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   exchange,
-  // exchange1,
-  // exchange2,
   ids,
   exchangeFutures
 } from "./constants/exchange";
@@ -72,20 +70,10 @@ export const App = () => {
     exchange.map((item, index) => {
       setTimeout(()=> {
           getCurrentExchange(item.name, item.page).then((data) => {
-            console.log("paso")
             setCurrentTickers((before) => [...before, data].flat())
           })
       },3000*index)
     })
-    // Promise.race(
-    //   exchange1
-    //     .map(async (item) => {
-    //       getCurrentExchange(item.name, item.page).then((data) => {
-    //         setCurrentTickers((before) => [...before, data].flat());
-    //       });
-    //     })
-    //     .flat()
-    // );
     setTimeout(() => {
       Promise.race(
         exchangeFutures
@@ -97,23 +85,10 @@ export const App = () => {
           .flat()
       );
     }, 5000);
-
-    // setTimeout(() => {
-    //   Promise.race(
-    //     exchange2
-    //       .map(async (item) => {
-    //         getCurrentExchange(item.name, item.page).then((data) => {
-    //           setCurrentTickers((before) => [...before, data].flat());
-    //         });
-    //       })
-    //       .flat()
-    //   );
-    // }, 20000);
   };
 
   return (
     <div style={{ textAlign: "center" }}>
-      {console.log("currentTickers", currentTickers)}
       <IndexPage
         currentTickers={currentTickers}
         exchanges={exchanges}

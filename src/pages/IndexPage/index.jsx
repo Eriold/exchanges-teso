@@ -32,6 +32,7 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
     searchText: "",
     searchedColumn: ""
   });
+  const [selection, setSelection] = useState([]);
 
   // const [newCurrent, setNewCurrent] = useState([]);
 
@@ -215,8 +216,29 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
     }
   ];
 
+  const onSelectChange = (select) => {
+    console.log("select", select)
+    if(select.length === 0) {
+      setSelection([])
+    }
+    if (select.length === 2) {
+      select.map((item) => {
+        currentTickers.find(
+          (element) =>
+            element.id === item &&
+            setSelection((before) => [...before, element])
+        );
+      });
+    }
+  };
+
+  const selectedRow = {
+    onChange: onSelectChange
+  };
+
   return (
     <div className="content">
+      {console.log("selection", selection)}
       <div style={{ margin: "16px" }}>
         <Row gutter={[16, 16]} style={{ textAlign: "center" }}>
           {current.length === ids.length &&
@@ -254,12 +276,39 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
               ))}
         </Row>
       </div>
+      <Row gutter={[16, 16]} style={{marginBottom: '14px'}}>
+        <Col span={6}>
+          <Card title="Inversión a realizar" style={{fontSize: '18px'}}> 100 </Card>
+        </Col>
+        <Col span={6}>
+          {" "}
+          <Card title={selection[0] ? `${selection[0].name} en ${selection[0].base}` : 'Exchange en cripto'} style={{fontSize: '18px'}}>
+            {" "}
+            {selection[0] ? selection[0].last : 'Precio cripto'}
+          </Card>{" "}
+        </Col>
+        <Col span={6}>
+          {" "}
+          <Card title={selection[1] ? `${selection[1].name} en ${selection[1].base}` : 'Exchange en cripto'} style={{fontSize: '18px'}}>
+            {" "}
+            {selection[1] ? selection[1].last : 'Precio cripto'}
+          </Card>{" "}
+        </Col>
+        <Col span={6}>
+          {" "}
+          <Card title='Beneficio' style={{fontSize: '18px'}}>
+            {" "}
+            {selection[0] && selection[1] ? (100/selection[0].last - 100/selection[1].last) : 'Precio cripto'}
+          </Card>{" "}
+        </Col>
+      </Row>
       <Table
         className="table-striped-rows"
         columns={columns}
         dataSource={currentTickers}
         pagination={{ pageSize: 50, showSizeChanger: false }}
         rowKey="id"
+        rowSelection={selectedRow}
       />
     </div>
   );
