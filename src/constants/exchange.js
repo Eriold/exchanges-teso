@@ -105,7 +105,13 @@ export const exchange = [
         name: "bithumb_global",
         page: 3,
         target: "tether"
-    }
+    },
+    {
+        name: "coinone",
+        page: 2,
+        target: "krown"
+    },
+
 ];
 
 export const ids = [

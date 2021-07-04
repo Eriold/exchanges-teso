@@ -58,37 +58,46 @@ export const App = () => {
 
   useEffect(() => {
     changeExchanges();
-    setInterval(() => {
-      setCurrentTickers([]);
-      changeExchanges();
-    }, 400000);
+    // setInterval(() => {
+    //   setCurrentTickers([]);
+    //   changeExchanges();
+    // }, 400000);
   }, []);
 
   // Exchanges
   const changeExchanges = () => {
 
-    exchange.map((item, index) => {
+    exchange.map((item, index) => 
       setTimeout(()=> {
-          getCurrentExchange(item.name, item.page).then((data) => {
+          getCurrentExchange(item.name, item.page, item.target).then((data) => {
             setCurrentTickers((before) => [...before, data].flat())
           })
-      },3000*index)
-    })
-    setTimeout(() => {
-      Promise.race(
-        exchangeFutures
-          .map(async (item) => {
-            getCurrentExchangeFutures(item).then((data) => {
-              setCurrentTickers((before) => [...before, data].flat());
-            });
-          })
-          .flat()
-      );
-    }, 5000);
+      },6500*index)
+    )
+    // setTimeout(() => {
+    //   Promise.race(
+    //     exchangeFutures
+    //       .map(async (item) => {
+    //         getCurrentExchangeFutures(item).then((data) => {
+    //           setCurrentTickers((before) => [...before, data].flat());
+    //         });
+    //       })
+    //       .flat()
+    //   );
+    // }, 5000);
+
+    exchangeFutures.map((item, index) => 
+      setTimeout(() => {
+        getCurrentExchangeFutures(item).then((data) => {
+          setCurrentTickers((before) => [...before, data].flat())
+        })
+      },4000*index)
+    )
   };
 
   return (
     <div style={{ textAlign: "center" }}>
+      {console.log("currentTickers", currentTickers)}
       <IndexPage
         currentTickers={currentTickers}
         exchanges={exchanges}

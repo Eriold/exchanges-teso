@@ -12,11 +12,16 @@ export const getExchange = async(name) => {
     return await exchange;
 };
 
-export const getCurrentExchange = async(name, page) => {
+export const getCurrentExchange = async(name, page, target) => {
     let newCurrentExhange = [];
 
     for (let i = 1; i <= page; i++) {
-        const url = `https://api.coingecko.com/api/v3/coins/tether/tickers?exchange_ids=${name}&page=${i}`;
+        let url;
+        if (target === 'krown') {
+            url = `https://api.coingecko.com/api/v3/exchanges/${name}/tickers?page=${page}`
+        } else {
+            url = `https://api.coingecko.com/api/v3/coins/tether/tickers?exchange_ids=${name}&page=${i}`;
+        }
 
         const resp = await fetch(url);
         const { tickers } = await resp.json();

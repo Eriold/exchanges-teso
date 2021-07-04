@@ -128,21 +128,22 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
   };
   const columns = [
     {
-      title: "Exhanges",
+      title: "",
       dataIndex: "name",
       key: "name",
-      render: (name) => (
-        <div>
+      render: (name) => 
           <Avatar
             draggable={false}
             src={<Image src={exchanges.find((e) => e.name === name)?.image} />}
-          />
-          <span style={{ marginLeft: "14px" }}>{name}</span>
-        </div>
-      ),
+          />,
+    },
+    {
+      title: "Exhanges",
+      dataIndex: "name",
+      key: "name",
       sorter: (a, b) => a.name.length - b.name.length,
-      sortDirections: ["descend", "ascend"]
-      // ...getColumnSearchProps("name")
+      sortDirections: ["descend", "ascend"],
+      ...getColumnSearchProps("name")
     },
     {
       title: "WEB",
@@ -205,13 +206,13 @@ export const IndexPage = ({ currentTickers, exchanges, current }) => {
       setSelection([])
     }
     if (select.length === 2) {
-      select.map((item) => {
+      select.map((item) => 
         currentTickers.find(
           (element) =>
             element.id === item &&
             setSelection((before) => [...before, element])
-        );
-      });
+        )
+      );
     }
   };
 
